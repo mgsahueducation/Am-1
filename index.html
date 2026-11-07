@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>خاموشی بولتی ہے — رہبر تماپوری</title>
+<meta property="og:image" content="title.png">
+<meta name="description" content="دکنی افسانہ «خاموشی بولتی ہے» از رہبر تماپوری">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@500;700&family=Mulish:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2a1d06; --paper:#17525a; --paper2:#0c2f35;
+  --serif:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq",serif;
+  --sans:"Mulish",system-ui,sans-serif;
+  /* brushed brass */
+  --metal:linear-gradient(172deg,#fff6cf 0%,#ecc965 28%,#a67a1c 52%,#f3d57d 72%,#c19230 100%);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;color:#f3e6bf;font-family:var(--serif);line-height:2.2;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .9  0 0 0 0 .95  0 0 0 0 .9  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    radial-gradient(120% 90% at 50% 0,var(--paper),var(--paper2));
+  padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+}
+a{color:inherit}
+:focus-visible{outline:3px solid #f2c14e;outline-offset:3px}
+
+/* ---------- Metal letters placed on paper ----------
+   The element itself draws the dark thickness of the letter;
+   ::after draws the polished metal face on top, shifted 1.5px up-left. */
+.metal{
+  position:relative;display:inline-block;color:var(--ink);font-weight:700;
+  text-shadow:none;-webkit-text-stroke:1.4px var(--ink);paint-order:stroke fill;
+}
+.metal::after{
+  content:attr(data-text);position:absolute;inset:0;pointer-events:none;
+  transform:none;
+  background:var(--metal);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;text-shadow:none;-webkit-text-stroke:0;
+}
+.metal.thin{font-weight:500;-webkit-text-stroke:.8px var(--ink)}
+
+/* ---------- Hero ---------- */
+.hero{min-height:88vh;display:grid;place-items:center;padding:3rem 1.2rem;perspective:900px;text-align:center}
+.stage{transform-style:preserve-3d;transition:transform .15s ease-out;cursor:grab}
+.title{
+  position:relative;font-size:clamp(2.6rem,10vw,6.5rem);line-height:1.6;
+  transform-style:preserve-3d;display:inline-block;--dx:0px;--dy:0px;
+}
+.title .face,.title .layer{display:block;white-space:nowrap;font-weight:700}
+.title .face{position:relative;transform:translateZ(1px);text-shadow:none}
+.title .layer{position:absolute;inset:0;pointer-events:none;
+  transform:translate3d(calc(var(--dx)*var(--i)),calc(var(--dy)*var(--i)),calc(var(--i)*-0.8px))}
+.sub{font-size:clamp(1.1rem,3.4vw,1.5rem);margin-top:.6rem}
+.hint{font-family:var(--sans);font-size:.85rem;margin-top:2rem;color:#a9c9c9;opacity:.9}
+
+/* ---------- Writer ---------- */
+.writer{max-width:720px;margin:0 auto;padding:1rem 1.2rem 4rem;display:grid;gap:1.6rem;justify-items:center;text-align:center}
+.photo{
+  position:relative;width:168px;height:168px;border-radius:50%;overflow:hidden;cursor:pointer;
+  background:var(--paper2);display:grid;place-items:center;font-size:4rem;
+  border:5px solid #e3b94d;
+}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.name{font-size:2.4rem}
+.role{font-size:1.1rem}
+.phone{
+  direction:ltr;unicode-bidi:isolate;display:inline-flex;gap:.7rem;align-items:center;text-decoration:none;
+  background:#071d21;border:2px solid #e3b94d;padding:.8rem 1.5rem;border-radius:999px;line-height:1.3;
+  font-family:var(--sans);font-size:1.25rem;
+}
+.phone .metal{font-family:var(--sans);font-weight:800;-webkit-text-stroke:0}
+.phone:active{transform:translateY(2px)}
+.links{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;font-family:var(--sans)}
+.links a{padding:.55rem 1.2rem;border:2px solid #b8923a;border-radius:999px;text-decoration:none}
+.links a .metal{font-family:var(--sans);font-weight:800;font-size:.95rem}
+.links a:hover{border-color:#ffe08a}
+
+/* ---------- Story ---------- */
+.story{max-width:640px;margin:0 auto;padding:2rem 1.2rem 5rem;border-top:2px solid rgba(227,185,77,.35)}
+.story figure{margin:0 0 1.6rem}
+.story figure img{width:100%;height:auto;display:block;border-radius:6px;border:8px solid #fbf7ec}
+.story h2{font-size:1.6rem;margin-bottom:1rem;display:block}
+.story p{font-size:1.15rem;margin-bottom:1rem;display:block}
+.story blockquote{margin:1.5rem 0;padding-inline-start:1rem;border-inline-start:4px solid #e3b94d;display:block}
+.story blockquote span{font-size:1.15rem;display:block}
+.story .meta{margin-bottom:.2rem}
+.story .sig{margin-top:.4rem;text-align:left}
+.story .couplet{text-align:center}
+.story .couplet span{margin-inline:auto}
+footer{text-align:center;padding:2rem 1rem;font-family:var(--sans);font-size:.9rem}
+
+@media (prefers-reduced-motion:reduce){.stage{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="stage" id="stage">
+    <h1 class="title" id="title" data-text="خاموشی بولتی ہے"><span class="face metal" data-text="خاموشی بولتی ہے">خاموشی بولتی ہے</span></h1>
+    <p class="sub"><span class="metal thin">دکنی افسانہ</span></p>
+    <p class="hint">Move the mouse, drag, or tilt your phone</p>
+  </div>
+</header>
+
+<main>
+  <section class="writer" aria-label="مصنف">
+    <label class="photo" title="تصویر بدلیں" id="photo">
+      <span id="initial" aria-hidden="true"><span class="metal">ر</span></span>
+      <img id="pic" src="profile.png" alt="رہبر تماپوری" hidden>
+      <input type="file" accept="image/*" id="file" aria-label="Change profile picture">
+    </label>
+    <div>
+      <div class="name"><span class="metal">رہبر تماپوری</span></div>
+      <div class="role"><span class="metal thin">افسانہ نگار · شاعر</span></div>
+    </div>
+    <a class="phone" id="phoneLink" href="tel:+918431012141">
+      <span class="metal" aria-hidden="true">&#9742;</span><span class="metal" id="phoneText">+91 84310 12141</span>
+    </a>
+    <nav class="links" aria-label="Links">
+      <a id="wa" href="#"><span class="metal">WhatsApp</span></a>
+    </nav>
+  </section>
+
+  <section class="story" aria-label="افسانہ">
+    <figure><img src="title.png" alt="دکن کی چائے کی ٹپری" loading="lazy" onerror="this.parentNode.hidden=true"></figure>
+    <h2><span class="metal">خاموشی بولتی ہے۔۔۔</span></h2>
+    <p class="meta"><span class="metal thin">صنف: افسانہ · دکنی زبان</span></p>
+    <p class="meta"><span class="metal thin">از قلم: رہبر تماپوری</span></p>
+    <p><span class="metal thin">دکن کے ایک گاؤں میں پرانی چائے کی ٹپری تھی۔ لوہے کی پتیلی میں دودھ ابل ریا تھا، شیشے کے گلاس کھنکھنا رئے تھے۔ فہد اور یوسف لکڑی کے پٹڑے پر بیٹھے چائے پی رئے تھے۔ اچانک فہد نے موبائل میں ویڈیو دیکھی اور ہنس پڑا۔</span></p>
+    <p><span class="metal thin">’’ارے یوسف میاں! ذرا ادھر دیکھو۔ کل تلک یہ صاحب تربیت گاہ میں ہاتھ باندھ کر بول رئے تھے: حضور، ہم تو ابھی طالب علم ہیں، بحر و وزن کی الف ب بھی نئیں آتی، ہماری اصلاح کرتے رئیں۔ اور آج وہی صاحب فیس بک پر لائیو آ کر ہانک رئے: اردو ادب میں ہمارے پائے کا کوئی سخنور نئیں، ہم صاحبِ طرز نقاد اور استاد الشعراء ہیں! اب تُو ای بول، یہ نوآموز ہیں یا استادوں کے استاد؟‘‘</span></p>
+    <p><span class="metal thin">یوسف نے چسکی بھری اور مسکرا کر بولا، ’’فہد میاں، تم بھی کاں کی بات کاں لے کو بیٹھ گئے! آج کل بعض آدمیوں کے ایک چہرے پر دس نقاب رتے۔ جہاں اپنا مطلب سوجھا، وہیں تعارف بدل لیا۔‘‘</span></p>
+    <p><span class="metal thin">فہد نے موبائل میز پہ رکھا۔ ’’پر میاں، یہ تماشا تو دیکھو! ایک طرف اخبار میں کتاب چھپا کے اشتہار دیتے: ایک بلند پایہ صاحبِ دیوان شاعر کا شاہکار۔ دوسری طرف ورکشاپ میں بولتے: ہم تو ابھی الف بے سیکھنے والے طالب علم ہیں۔ دیباچہ لکھوانے واسطے استادوں کی خوشامد کرتے، پھر وہی کتاب ہاتھ میں لے کے نئے شاعروں کے سامنے اڑتے: دیکھو، ہمارے جیسا کوئی ہے کیا؟ آخر آدمی ایک ای وقت میں کتنی شکلیں بدلے گا؟‘‘</span></p>
+    <p><span class="metal thin">یوسف نے گلاس پٹڑے پر رکھا۔ ’’گھوڑے کی مثال یاد رکھو۔ گھوڑا تانگے والا بھی باندھتا، گھسیارا بھی، پر گھوڑا رکھنے سے ہر کوئی شہسوار نئیں بن جاتا۔ شہسوار او کہلاتا ہے جس کو گھوڑے پر قابو ہو، جس کی مہارت میدان میں دکھائی دے۔ اسی طرح کتاب چھپانا الگ بات ہے اور صاحبِ دیوان ہونے کا وقار، فکر کا ٹھہراؤ اور فن کی پختگی حاصل کرنا الگ بات۔‘‘</span></p>
+    <p><span class="metal thin">’’ہاؤ میاں، سچ بولے!‘‘ فہد نے کہا۔ ’’اور اخباروں کے ادبی صفحوں کا حال دیکھو۔ بعض مدیر اپنی پسند کے چند لوگوں کا ای راگ الاپتے رتے۔ جو محنت کرتے، برسوں ریاضت کرتے، ان کی تحریریں پڑی رتیں۔ جو خوشامد کے پل باندھتے، مدیر کے ساتھ چائے پیتے اور اپنے نام کے ڈونگرے پٹواتے، ان کے کلام بار بار چھپتے۔ نئے لکھنے والے صلاحیت دکھانا تو کاں دکھانا؟‘‘</span></p>
+    <p><span class="metal thin">یوسف نے سنجیدگی سے کہا، ’’بات تو تماری صحیح ہے، پر ہر مدیر کو ایک ای ترازو میں تولنا بھی ٹھیک نئیں۔ اصل مسئلہ وہاں پیدا ہوتا جاں قابلیت سے زیادہ تعلقات کو اہمیت دی جاتی۔ تعلقات بنانا عیب نئیں، مگر ان کے بل بوتے پر علم اور فن کا ڈھونگ رچانا غلط ہے۔ استاد کے پاس سیکھنے جاؤ، ان کے نام کو اپنی دکان کا سائن بورڈ بنانے نئیں۔‘‘</span></p>
+    <p><span class="metal thin">فہد نے سر ہلایا۔ ’’اور میاں، بعض لوگ استاد شاعروں سے غزلیں لکھا کے خود مشاعروں میں داد لوٹتے۔ اسٹیج پر ڈائری لے کے چڑھتے، اس میں رومن اردو یا ہندی رسم الخط میں شعر لکھے رتے۔ اردو رسم الخط ٹھیک سے پڑھنا نئیں آتا، مگر اپنے آپ کو اردو کا بڑا شاعر بتاتے!‘‘</span></p>
+    <p><span class="metal thin">یوسف بولا، ’’رومن اردو میں لکھنا بذاتِ خود کوئی عیب نئیں، سہولت کے واسطے لوگ ایسا کرتے۔ پر اردو کا شاعر ہونے کا دعویٰ کرنے والے کو زبان، املا اور رسم الخط سیکھنے کی کوشش بھی کرنا پڑتا۔ استاد سے اصلاح لینا اچھی بات ہے، لیکن کسی دوسرے کا کلام اپنا بتا کر پیش کرنا دیانت داری کے خلاف ہے۔‘‘</span></p>
+    <p><span class="metal thin">فہد ہنسا۔ ’’رومن میں غزل پڑھ کر اردو کے وارث بننا ایسا ای ہے جیسے رس گلے کے بغیر خالی کٹوری میں شیرہ رکھ دینا! شیرہ کتنا بھی میٹھا ہو، اندر رس گلا ای نئیں تو چاشنی چاٹنے سے روح کی بھوک تھوڑی مٹتی!‘‘</span></p>
+    <p><span class="metal thin">یوسف بھی مسکرایا۔ ’’اور صرف مشکل لفظ استعمال کرنے سے شاعری معیاری نئیں ہوجاتی۔ خیال میں تازگی، زبان میں سلاست اور شعر میں اثر ہونا چاہیے۔ شاعر کی پہچان کلام سے ہوتی، اشتہار سے نئیں۔‘‘</span></p>
+    <p><span class="metal thin">دونوں کے بیچ کچھ دیر خاموشی چھا گئی۔ فہد نے ڈائری نکالی، ایک صفحہ کھول کر بولا، ’’یوسف میاں، کل اخبار میں رہبر تماپوری کا ایک شعر پڑھا۔ او شعر ایسے لوگوں کو خود اپنا چہرہ دکھاتا۔ سنو ذرا!‘‘</span></p>
+    <blockquote class="couplet"><span class="metal thin">آئینہ خود ہے تیری حقیقت سے آشنا</span><span class="metal thin">فکرِ زمانہ چھوڑ کے خود کو سنوار لے</span><span class="metal thin sig">— رہبر تماپوری</span></blockquote>
+    <p><span class="metal thin">فہد نے ڈائری بند کردی۔ ’’اب بتاؤ، کیا کھرے سچ کی بات ہے! آدمی زمانے کو فریب دے لے، مدیر سے تعریفیں لکھوا لے، مشاعروں میں داد بٹور لے، پر اکیلے میں آئینے کے سامنے کھڑا ہو تو اپنی حقیقت سے کیسے بچ سکتا؟‘‘</span></p>
+    <p><span class="metal thin">یوسف نے ٹپری سے اٹھتے دھوئیں کو دیکھا، لہجہ سنجیدہ ہوگیا۔ ’’فہد میاں، یہی او جگہ ہے جہاں دنیا کا سارا شور ہار جاتا۔ جو آدمی ہر محفل میں اپنے رتبے کی دہائی دیتا پھرے، اسے ایک دن اپنے ضمیر کا سامنا کرنا پڑتا۔ طالب علم سے استاد بننا گناہ نئیں، نوآموز سے پختہ شاعر بننا بھی غلط نئیں۔ پر اس واسطے برسوں کی محنت، مطالعہ اور خونِ جگر چاہیے۔ ادھار کی غزلوں اور خوشامد کے سہارے جو عمارت کھڑی ہوتی، وقت کا ایک جھونکا اسے مٹی میں ملا دیتا۔‘‘</span></p>
+    <p><span class="metal thin">ٹپری پر کوئلوں کی آنچ مدھم ہو چکی تھی۔ فہد نے موبائل جیب میں رکھ لیا۔ چہرے پر نہ غصہ تھا، نہ ہنسی؛ بس ایک سنجیدہ اطمینان۔</span></p>
+    <p><span class="metal thin">یوسف اٹھا اور فہد کے کندھے پر ہاتھ رکھ کر بولا، ’’چل میاں، اب اٹھتے۔ وقت کے پاس ایسی ترازو ہے جس میں چمچہ گیری نئیں چلتی۔ جھوٹے دعوے ایک دن ہوا میں تحلیل ہوجاتے، مگر سچا کام چپ چاپ دلوں میں جگہ بناتا۔‘‘</span></p>
+    <p><span class="metal thin">دونوں ٹپری سے باہر نکلے تو رات کی سرد ہوا ان کے چہروں سے ٹکرائی۔ گفتگو ختم ہوچکی تھی، مگر سوال ابھی زندہ تھے۔ ایک شخص اپنی پہچان بنانے کے لیے کتنے نقاب پہن سکتا ہے؟ اور کب تک؟</span></p>
+    <p><span class="metal thin">جواب نہ کسی اخبار میں تھا، نہ کسی مشاعرے کی واہ واہ میں۔ جواب انسان کے اپنے ضمیر میں چھپا تھا، جہاں جھوٹے دعووں کی آواز دھیرے دھیرے دم توڑ دیتی ہے اور حقیقت بغیر کچھ کہے سامنے آ کھڑی ہوتی ہے۔</span></p>
+    <p><span class="metal thin">کیونکہ میاں، جب انسان اپنے ضمیر کے سامنے کھڑا ہوتا ہے تو کبھی کبھی زبان خاموش رہتی ہے، مگر حقیقت بول اٹھتی ہے۔ یہی تو ہے—خاموشی بولتی ہے!</span></p>
+  </section>
+</main>
+
+<footer>&copy; <span id="year"></span> <span class="metal thin">رہبر تماپوری</span></footer>
+
+<script>
+/* ======== EDIT THESE ======== */
+const CONFIG = {
+  phoneDisplay: "+91 84310 12141",
+  phoneDial:    "+918431012141",
+  photo:        "profile.png"
+};
+/* ============================ */
+
+// Metal letters need a copy of their text for the polished face
+function metalize(root){
+  root.querySelectorAll(".metal").forEach(el => { el.dataset.text = el.textContent.trim(); });
+}
+document.getElementById("phoneText").textContent = CONFIG.phoneDisplay;
+document.getElementById("phoneLink").href = "tel:" + CONFIG.phoneDial;
+document.getElementById("wa").href = "https://wa.me/" + CONFIG.phoneDial.replace(/\D/g, "");
+document.getElementById("year").textContent = new Date().getFullYear();
+metalize(document);
+
+// Profile picture
+const pic = document.getElementById("pic"), initial = document.getElementById("initial");
+pic.onload = () => { pic.hidden = false; initial.hidden = true; };
+pic.onerror = () => { pic.hidden = true; initial.hidden = false; };
+pic.src = CONFIG.photo;
+document.getElementById("file").addEventListener("change", e => {
+  const f = e.target.files[0];
+  if (f) pic.src = URL.createObjectURL(f);
+});
+
+// 3D title: real stacked metal layers
+const stage = document.getElementById("stage"), title = document.getElementById("title");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const N = 24;
+for (let i = N; i >= 1; i--) {
+  const l = document.createElement("span");
+  l.className = "layer"; l.setAttribute("aria-hidden", "true");
+  l.textContent = title.dataset.text;
+  l.style.setProperty("--i", i);
+  const t = i / N;
+  l.style.color = `rgb(${Math.round(175 - 105 * t)},${Math.round(130 - 80 * t)},${Math.round(35 - 20 * t)})`;
+  title.appendChild(l);
+}
+function tilt(nx, ny){
+  stage.style.transform = `rotateY(${nx * 13}deg) rotateX(${-ny * 9}deg)`;
+  title.style.setProperty("--dx", (-nx * 0.45).toFixed(2) + "px");
+  title.style.setProperty("--dy", (ny * 0.35 + 0.25).toFixed(2) + "px");
+}
+let touched = false, t0 = performance.now();
+function idle(now){
+  if (!touched && !reduce) {
+    const t = (now - t0) / 1000;
+    tilt(Math.sin(t * 0.9) * 0.55, Math.cos(t * 0.7) * 0.25);
+    requestAnimationFrame(idle);
+  }
+}
+tilt(0.3, 0.1);
+if (!reduce) requestAnimationFrame(idle);
+let dragging = false;
+function fromPointer(e){
+  touched = true;
+  tilt((e.clientX / innerWidth) * 2 - 1, (e.clientY / innerHeight) * 2 - 1);
+}
+addEventListener("pointermove", e => { if (e.pointerType === "mouse" || dragging) fromPointer(e); });
+stage.addEventListener("pointerdown", e => { dragging = true; fromPointer(e); });
+addEventListener("pointerup", () => { dragging = false; });
+addEventListener("deviceorientation", e => {
+  if (e.gamma == null) return;
+  touched = true;
+  tilt(Math.max(-1, Math.min(1, e.gamma / 30)), Math.max(-1, Math.min(1, (e.beta - 45) / 30)));
+});
+</script>
+</body>
+</html>
